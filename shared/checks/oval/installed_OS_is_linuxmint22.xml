@@ -1,0 +1,26 @@
+<def-group>
+  <definition class="inventory" id="installed_OS_is_linuxmint22" version="1">
+    <metadata>
+      <title>Linux Mint 22</title>
+      <affected family="unix">
+        <platform>multi_platform_all</platform>
+      </affected>
+      <reference ref_id="cpe:/o:canonical:linuxmint:22" source="CPE" />
+      <description>The operating system installed on the system is Linux Mint 22</description>
+    </metadata>
+    <criteria comment="current Linux Mint version is 22" operator="AND">
+      <extend_definition comment="Linux Mint is installed" definition_ref="installed_OS_is_linuxmint" />
+      <criterion comment="22 is installed" test_ref="test_linuxmint_22" />
+    </criteria>
+  </definition>
+
+  <ind:textfilecontent54_test check="all" check_existence="at_least_one_exists" comment="Check Linux Mint version" id="test_linuxmint_22" version="1">
+    <ind:object object_ref="obj_linuxmint_22" />
+  </ind:textfilecontent54_test>
+  <ind:textfilecontent54_object id="obj_linuxmint_22" version="1" comment="Check Linux Mint version">
+    <ind:filepath>/etc/lsb-release</ind:filepath>
+    <ind:pattern operation="pattern match">^DISTRIB_CODENAME=wilma$</ind:pattern>
+    <ind:instance datatype="int">1</ind:instance>
+  </ind:textfilecontent54_object>
+
+</def-group>
